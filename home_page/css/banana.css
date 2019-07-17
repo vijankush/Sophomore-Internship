@@ -1,0 +1,184 @@
+/*
+BananaSlider JS v1.1
+http://jspolis.com/bananaslider/
+
+License: ThemeForest Regular & Extended License
+License URI: http://themeforest.net/licenses/regular_extended
+
+Copyright 2015 Tetiana Sologub
+
+[Table of contents]
+
+1. General
+  1.1. Basic styles   
+2. Slider Styles
+  2.1 Hover Styles
+  2.2 Circle Button
+  2.3 Triangle Button  
+3. Animations
+  3.1 Pulse Effect 
+  
+*/  
+
+/******************************************************************************
+  General
+*******************************************************************************/
+/* Basic styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#banana-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+}
+.banana-slide {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+.banana-slide .content {
+  width: 160%;
+  left: -30%;
+  position: absolute;
+  height: 100%;
+  background-position: center center, top left;
+  background-size:  auto 30%, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+.banana-slide .content video {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+  left:-2%;
+}
+
+/******************************************************************************
+  Slider Styles
+*******************************************************************************/
+/* Hover styles */
+.banana-slide:hover .click_circle, .banana-slide:hover .click_triangle {opacity:1; }
+.banana-slide:hover .click_circle:hover, .banana-slide:hover .click_triangle:hover {
+	-webkit-animation-name: banana_pulse;
+	-moz-animation-name: banana_pulse;
+	-o-animation-name: banana_pulse;
+	animation-name: banana_pulse;
+	-webkit-animation-duration:.5s; 
+	animation-duration:.5s;	
+	}
+.banana-slide:hover .click_circle:hover > span {transform:scale(1.05,1.05); -webkit-transform:scale(1.05,1.05)}
+
+/* Circle Button  */
+.click_circle {-webkit-transform:scale(.9,.9);transform:scale(.9,.9);-webkit-tap-highlight-color:transparent;
+display:block;  transition: all 0.2s ease 0s;  -webkit-transition: all 0.2s ease 0s; opacity:0;position:absolute;width:158px;height:158px;left:50%;z-index:1;margin-left:-79px;top:50%;margin-top:-79px;cursor:pointer}
+
+.click_circle:after {pointer-events:none;opacity:.5; content:url("data:image/svg+xml;utf8, <svg class='click_circle_bg' viewBox='0 0 100 100' version='1.1' xmlns='http://www.w3.org/2000/svg'><circle fill='%23f4f4f4' cx='50' cy='50' r='48'></circle></svg>");}
+.click_circle > span {pointer-events:none;position:absolute;left:50%;top:50%;margin-left:-34px;margin-top:-34px;background:#f2f2f2;width:69px;height:69px;z-index:4;border-radius:50%}
+
+.click_circle > span > span {-webkit-tap-highlight-color:transparent;position:relative;display:block;left:50%;top:50%;margin-left:-9px;margin-top:-9px;width:18px;height:18px;z-index:4;pointer-events:none; text-indent:-9999px}
+.click_circle > span > span:before {content:'';display:block;position:absolute;left:0;top:50%;margin-top:-1px;width:18px;height:2px;background:#666666;border-radius:1px}
+
+.click_circle > span > span:after {content:'';display:block;position:absolute;left:50%;margin-left:-1px;width:2px;height:100%;background:#666666;bottom:0;border-radius:1px}
+
+/* Triangle Button  */
+.click_triangle {transform:scale(.8,.8);-webkit-transform:scale(.8,.8);-webkit-tap-highlight-color:transparent;display:block;  transition: all 0.2s ease 0s;  -webkit-transition: all 0.2s ease 0s;	opacity:0;position:absolute;width:158px;height:158px;left:50%;z-index:1;margin-left:-79px;top:50%;margin-top:-79px;cursor:pointer}
+
+.click_triangle > span {transform:scale(.8,.8);-webkit-transform:scale(.8,.8);display:block;-webkit-tap-highlight-color:transparent;position:relative;display:block;left:50%;top:50%;margin-left:-50px;margin-top:-50px;width:50px;height:50px;z-index:4;pointer-events:none}
+
+.click_triangle > span:before {content:url("https://vijankush.github.io/Sophomore-Internship/home_page/images/banana_play.svg");display:block;-webkit-tap-highlight-color:transparent;position:absolute;display:block;left:50%;top:50%;margin-left:-50px;margin-top:-50px;width:18px;height:18px;z-index:4;pointer-events:none}
+
+/******************************************************************************
+  Animations
+*******************************************************************************/
+/* Pulse Effect  */
+
+@-webkit-keyframes banana_pulse {
+    0% { -webkit-transform: scale(1); }	
+	50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }
+}
+@-moz-keyframes banana_pulse {
+    0% { -moz-transform: scale(1); }	
+	50% { -moz-transform: scale(1.1); }
+    100% { -moz-transform: scale(1); }
+}
+@-o-keyframes banana_pulse {
+    0% { -o-transform: scale(1); }	
+	50% { -o-transform: scale(1.1); }
+    100% { -o-transform: scale(1); }
+}
+@keyframes banana_pulse {
+    0% { transform: scale(1); }	
+	50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+
+
+.content .label {
+  border-radius: 0;
+  display: block;
+  font-size: 1em;
+  letter-spacing: 7px;
+  padding: 15px 30px;
+  position: absolute;
+  text-align: left;
+  width: 100%; 
+  text-decoration:none;
+  transition: transform 0.35s ease 0s;
+  -webkit-transition: transform 0.35s ease 0s;
+   transform: translate3d(200%, 0px, 0px);
+  -webkit-transform: translate3d(200%, 0px, 0px);  
+  transition-delay: 0.3s;
+  -webkit-transition-delay: 0.3s;
+}
+
+.content .label.round {
+border-radius:30px;
+}
+	
+.content .label:hover {
+text-decoration:none;	
+	}
+
+.content .label > span {
+  color: #fff;
+  display: block;
+  font-size: 1em;
+  font-style: normal;
+}
+
+/* RESPONSIVE STYLES */
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+ 
+.banana-slide .content {
+  width: 180%;
+  left: -35%;
+  position: absolute;
+  height: 100%;
+  background-position: center center, center center;
+  background-size:  auto 20%, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.banana-slide:hover .click_circle, .banana-slide:hover .click_triangle {
+    opacity: 0;
+}	
+
+ }
+ 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) { 
+
+.banana-slide:hover .click_circle, .banana-slide:hover .click_triangle {
+    opacity: 0;
+}
+	
+}
